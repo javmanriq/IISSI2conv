@@ -6,7 +6,7 @@ import loadProductModel from './Product.js'
 import loadProductCategoryModel from './ProductCategory.js'
 import loadRestaurantCategoryModel from './RestaurantCategory.js'
 import loadUserModel from './User.js'
-// Needed for statement
+// Solution
 import loadPerformanceModel from './Performance.js'
 
 const sequelizeSession = new Sequelize(getEnvironmentConfig().database, getEnvironmentConfig().username, getEnvironmentConfig().password, getEnvironmentConfig())
@@ -16,10 +16,10 @@ const Product = loadProductModel(sequelizeSession, Sequelize.DataTypes)
 const ProductCategory = loadProductCategoryModel(sequelizeSession, Sequelize.DataTypes)
 const RestaurantCategory = loadRestaurantCategoryModel(sequelizeSession, Sequelize.DataTypes)
 const User = loadUserModel(sequelizeSession, Sequelize.DataTypes)
-// Needed for statement
+// Solution
 const Performance = loadPerformanceModel(sequelizeSession, Sequelize.DataTypes)
 
-// Needed for statement
+// Solution
 const db = { Restaurant, Order, Product, ProductCategory, RestaurantCategory, User, Performance }
 
 Object.keys(db).forEach(modelName => {
@@ -28,5 +28,5 @@ Object.keys(db).forEach(modelName => {
   }
 })
 
-// Needed for statement
+// Solution
 export { Performance, Restaurant, Order, Product, ProductCategory, RestaurantCategory, User, sequelizeSession }

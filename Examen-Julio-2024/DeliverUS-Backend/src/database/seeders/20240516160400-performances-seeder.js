@@ -20,8 +20,7 @@ module.exports = {
       const futureNow = new Date(Date.now() + 10 * 24 * 60 * 60 * 1000)
       futureNow.setHours(0,0,0,0)  
 
-      try {
-        await queryInterface.bulkInsert('Performances',
+      await queryInterface.bulkInsert('Performances',
         [
           { group: 'Iron Maiden', appointment: beforeNow , restaurantId: 1 },
           { group: 'Then Rolling Stones', appointment: today , restaurantId: 1 },
@@ -31,9 +30,6 @@ module.exports = {
           { group: 'AC/DC', appointment: tomorrow, restaurantId: 2},
           { group: 'Chikilicuatre', appointment: tomorrowPast, restaurantId: 2}
         ], {})
-      } catch (error) {
-        console.info('Don\'t forget to complete the migration for performances table.')
-      }     
     },
   
     down: async (queryInterface, Sequelize) => {
