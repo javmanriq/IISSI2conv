@@ -24,5 +24,17 @@ const restaurantHasNoOrders = async (req, res, next) => {
     return res.status(500).send(err.message)
   }
 }
+const checkStatus = async (req, res, next) => {
+  try {
+    const restaurant = await Restaurant.findByPk(req.params.restaurantId)
+    if (restaurant.status === 'online' || restaurant.status === 'offline') {
+      return next()
+    }
+    return res.status(409).send('Conflict')
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
 
-export { checkRestaurantOwnership, restaurantHasNoOrders }
+export { checkRestaurantOwnership, restaurantHasNoOrders, checkStatus }
+
